@@ -42,9 +42,27 @@
       let total = 0;
       let male = 0;
 
-      // Add your code here
+      const parsedObject = JSON.parse(catString);
+      console.log(parsedObject)
 
-      // Don't edit the code below here!
+      let females = 0, males = 0, all = 0;
+
+      parsedObject.forEach(element => {
+        motherInfo = motherInfo.concat(" ", element.name);
+        const kittens = element.kittens;
+        all = all + kittens.length;
+        const femalesArray = kittens.filter(kitten => kitten.gender === 'f');
+        females = females + femalesArray.length;
+        
+      });
+      males = all-females;
+
+      console.log(all);
+      console.log(females);
+      console.log(males);
+
+      kittenInfo = `There are ${ all } kittens in total, ${ males } males and ${ females } females.`;
+
 
       para1.textContent = motherInfo;
       para2.textContent = kittenInfo;
