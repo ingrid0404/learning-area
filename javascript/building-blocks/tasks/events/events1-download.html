@@ -26,10 +26,20 @@
     <section class="preview">
     </section>
 
-    <button class="off">Machine is off</button>
+    <button class="off">AAAA</button>
+
+    
 
   <script>
     const btn = document.querySelector('.off');
+    let wasPressed = true;
+    btn.addEventListener('click',() =>  {
+      wasPressed = !wasPressed;
+      btn.innerHTML = wasPressed ? 'AAAA' : 'BBBB';
+
+      
+    });
+
 
     // Add your code here
 
