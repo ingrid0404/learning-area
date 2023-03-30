@@ -26,6 +26,39 @@
 
   </body>
   <script>
+class Shape {
+
+name;
+sides;
+sideLength;
+
+constructor(name, sides, sideLength) {
+  this.name = name;
+  this.sides = sides;
+  this.sideLength = sideLength;
+}
+
+calcPerimeter() {
+  console.log("Perimeter: ");
+  const perimeter = this.sides * this.sideLength;
+  console.log(perimeter);
+}
+
+}
+
+class Square extends Shape {
+  constructor(sideLength) {
+    super('patrat', 4, sideLength);
+  }
+  calcArea() {
+    console.log("Arie: ");
+    const arie = this.sideLength * this.sideLength;
+    console.log(arie);
+  }
+}
+
+const patratNou = new Square(5);
+patratNou.calcArea();
 
   </script>
 

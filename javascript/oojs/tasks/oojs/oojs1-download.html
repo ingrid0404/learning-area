@@ -32,8 +32,25 @@
     sides;
     sideLength;
 
+    constructor(name, sides, sideLength) {
+      this.name = name;
+      this.sides = sides;
+      this.sideLength = sideLength;
+    }
+
+    calcPerimeter() {
+      console.log("Perimeter: ");
+      const perimeter = this.sides * this.sideLength;
+      console.log(perimeter);
+    }
+
   }
 
+  const patrat = new Shape('patrat', 4, 6);
+  patrat.calcPerimeter();
+
+  const triunghi = new Shape('triunghi', 3, 4);
+  triunghi.calcPerimeter();
   </script>
 
 </html>
