@@ -30,6 +30,19 @@
     </canvas>
 
   <script>
+
+    /*
+    ow we'll look at keyboard events. To pass this assessment you need 
+    to build an event handler that moves the circle around the provided 
+    canvas when the WASD keys are pressed on the keyboard. The circle is drawn with the 
+    function drawCircle(), which takes the following parameters as inputs:
+
+    x — the x coordinate of the circle.
+    y — the y coordinate of the circle.
+    size — the radius of the circle.
+
+Try updating the live code below to recreate the finished example:
+    */
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -49,7 +62,21 @@
 
     drawCircle(x, y, size);
 
-    // Add your code here
+    canvas.addEventListener("keypress", logKey);
+
+    function logKey(e) {
+      switch(e.key){
+        case 'w': y = y-10; drawCircle(x,y,size);
+            break;
+        case 'a': x = x-10; drawCircle(x,y,size);
+            break;
+        case 's': y = y+10; drawCircle(x,y,size);
+            break;
+        case 'd': x = x+10; drawCircle(x,y,size);
+            break;
+        default: break;
+  }
+}
 
   </script>
   </body>
