@@ -22,14 +22,34 @@ function randomRGB() {
 /*
   vel - velocity
 */
-class Ball {
-  constructor(x, y , color, size, velX, velY) {
+
+class Shape {
+  constructor(x, y, velX, velY) {
     this.x = x;
     this.y = y;
-    this.size = size;
-    this.color = color;
     this.velX = velX;
     this.velY = velY;
+  }
+}
+
+class EvilCircle extends Shape{
+  constructor(x, y ) {
+    super(x,y,20,20);
+    this.size = 10;
+    this.color = "white";
+    this.exist = true;
+    
+  }
+
+}
+
+class Ball extends Shape{
+  constructor(x, y , color, size, velX, velY) {
+    super(x,y,velX,velY);
+    this.size = size;
+    this.color = color;
+    this.exist = true;
+    
   }
 
   draw() {
@@ -57,7 +77,7 @@ class Ball {
   }
   collisionDetect() {
     for (const bl of bls) {
-      if (this !== bl) {
+      if (!(this === bl) && bl.exist) {
         const dx = this.x - bl.x;
         const dy = this.y - bl.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -71,10 +91,11 @@ class Ball {
   
 }
 
-const ball1 = new Ball(20, 40, "yellow", 10, 4, 4);
+
+
 
 const bls = [];
-while(bls.length < 40) {
+while(bls.length < 20) {
   const size = random(20,50);
   const color = randomRGB();
   const x = random(0+size, width-size);
@@ -95,6 +116,7 @@ function loop() {
     bl.draw();
     bl.update();
     //bl.collisionDetect();
+    bl.collisionDetect();
   }
 
   requestAnimationFrame(loop);
